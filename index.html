@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEAFT — Train Without Doubt</title>
+    <meta name="description" content="HEAFT is the AI fitness app that justifies every rep, every weight, and every workout plan with real data. Train smarter, not harder.">
+    <link rel="canonical" href="https://heaft.app">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="HEAFT">
+    <meta name="theme-color" content="#0B0F1A">
+    <meta name="keywords" content="AI fitness app, AI personal trainer, workout planner, strength training, gym app, AI coach, smart training">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://heaft.app">
+    <meta property="og:site_name" content="HEAFT">
+    <meta property="og:title" content="HEAFT — Train Without Doubt">
+    <meta property="og:description" content="HEAFT is the AI fitness app that justifies every rep, every weight, and every workout plan with real data. Train smarter, not harder.">
+    <meta property="og:image" content="https://heaft.app/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="HEAFT — AI Fitness Training App">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HEAFT — Train Without Doubt">
+    <meta name="twitter:description" content="HEAFT is the AI fitness app that justifies every rep, every weight, and every workout plan with real data. Train smarter, not harder.">
+    <meta name="twitter:image" content="https://heaft.app/og.png">
+
+    <!-- Favicon (inline SVG — no file needed) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' rx='22' fill='%230B0F1A'/%3E%3Crect x='18' y='32' width='5' height='32' rx='1.5' fill='%238A93A6' opacity='.55'/%3E%3Crect x='73' y='32' width='5' height='32' rx='1.5' fill='%238A93A6' opacity='.55'/%3E%3Crect x='26' y='26' width='5' height='44' rx='1.5' fill='%238A93A6'/%3E%3Crect x='65' y='26' width='5' height='44' rx='1.5' fill='%238A93A6'/%3E%3Crect x='34' y='18' width='5' height='60' rx='1.5' fill='%2300E5A0'/%3E%3Crect x='57' y='18' width='5' height='60' rx='1.5' fill='%2300E5A0'/%3E%3Crect x='18' y='46' width='60' height='4' rx='1.5' fill='%23F5F7FA'/%3E%3Ccircle cx='48' cy='48' r='2.5' fill='%230B0F1A'/%3E%3C/svg%3E">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://heaft.app/#organization",
+          "name": "HEAFT",
+          "url": "https://heaft.app",
+          "logo": "https://heaft.app/og.png",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "support@heaft.app",
+            "contactType": "customer support",
+            "availableLanguage": "English"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://heaft.app/#website",
+          "url": "https://heaft.app",
+          "name": "HEAFT",
+          "description": "AI-powered fitness training app that justifies every rep, weight, and workout plan with real data.",
+          "publisher": { "@id": "https://heaft.app/#organization" }
+        },
+        {
+          "@type": "MobileApplication",
+          "name": "HEAFT",
+          "description": "AI-powered fitness training app that justifies every rep, weight, and workout plan with real data.",
+          "applicationCategory": "HealthApplication",
+          "operatingSystem": "iOS, Android",
+          "url": "https://heaft.app",
+          "publisher": { "@id": "https://heaft.app/#organization" },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ── TOKENS ── */
+        :root {
+            --bg:         #0B0F1A;
+            --surface:    #151B2B;
+            --surface-hi: #1F2740;
+            --shimmer:    #2A3450;
+            --mint:       #00E5A0;
+            --mint-dim:   rgba(0,229,160,0.11);
+            --ember:      #FF5E3A;
+            --text-hi:    #F5F7FA;
+            --text-lo:    #8A93A6;
+            --font-d: 'Sora', system-ui, sans-serif;
+            --font-b: 'Inter', system-ui, sans-serif;
+            --font-m: 'JetBrains Mono', monospace;
+            /* Easing — no bounce, no elastic */
+            --ease-expo:  cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-quart: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--bg);
+            color: var(--text-hi);
+            font-family: var(--font-b);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        a { color: inherit; text-decoration: none; }
+        img, svg { display: block; }
+
+        /* ── DOT GRID ── */
+        body::before {
+            content: '';
+            position: fixed; inset: 0;
+            background-image: radial-gradient(circle, rgba(31,39,64,.9) 1px, transparent 1px);
+            background-size: 32px 32px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ────────────────────────────────
+           NAV
+        ──────────────────────────────── */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 22px 40px;
+            transition: background .35s var(--ease-quart),
+                        padding .35s var(--ease-quart),
+                        border-color .35s var(--ease-quart);
+            border-bottom: 1px solid transparent;
+        }
+        .nav.scrolled {
+            background: rgba(11,15,26,.92);
+            backdrop-filter: blur(16px);
+            padding: 14px 40px;
+            border-bottom-color: var(--surface-hi);
+        }
+        .nav-brand { display: flex; align-items: center; gap: 12px; }
+        .nav-word  {
+            font-family: var(--font-d); font-size: 18px;
+            font-weight: 800; letter-spacing: 3.5px; color: var(--text-hi);
+        }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a {
+            font-size: 14px; font-weight: 500; color: var(--text-lo);
+            position: relative; padding-bottom: 2px;
+            transition: color .2s;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute; bottom: -1px; left: 0; right: 0;
+            height: 1px; background: var(--mint);
+            transform: scaleX(0); transform-origin: left;
+            transition: transform .28s var(--ease-quart);
+        }
+        .nav-links a:hover { color: var(--text-hi); }
+        .nav-links a:hover::after { transform: scaleX(1); }
+
+        .nav-cta {
+            background: var(--mint); color: var(--bg);
+            border: none; cursor: pointer;
+            font-family: var(--font-b); font-size: 14px; font-weight: 600;
+            padding: 10px 22px; border-radius: 14px;
+            transition: transform .1s var(--ease-quart), opacity .2s;
+            position: relative; overflow: hidden;
+        }
+        .nav-cta:hover { opacity: .9; }
+        .nav-cta:active { transform: scale(.94); }
+
+        /* ────────────────────────────────
+           HERO
+        ──────────────────────────────── */
+        .hero {
+            position: relative; z-index: 1;
+            min-height: 100vh;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center;
+            padding: 140px 24px 100px;
+            overflow: hidden;
+        }
+        .hero-ambient {
+            position: absolute; top: 50%; left: 50%;
+            width: 720px; height: 520px;
+            transform: translate(-50%, -55%);
+            background: radial-gradient(ellipse at center, rgba(0,229,160,.07) 0%, transparent 68%);
+            pointer-events: none;
+            animation: ambientPulse 6s ease-in-out infinite;
+        }
+        @keyframes ambientPulse {
+            0%,100% { opacity:.6; transform:translate(-50%,-55%) scale(1); }
+            50%      { opacity:1;  transform:translate(-50%,-55%) scale(1.1); }
+        }
+
+        /* Barbell logo */
+        .logo-wrap { position: relative; display: inline-block; margin-bottom: 28px; }
+        .logo-svg  { width: 110px; height: 110px; }
+
+        /* Plates: ease-out-expo, no bounce */
+        .p-ol { animation: pLeft  .6s .08s var(--ease-expo) both; }
+        .p-or { animation: pRight .6s .08s var(--ease-expo) both; }
+        .p-ml { animation: pLeft  .6s .20s var(--ease-expo) both; }
+        .p-mr { animation: pRight .6s .20s var(--ease-expo) both; }
+        .p-il { animation: pLeft  .6s .34s var(--ease-expo) both; }
+        .p-ir { animation: pRight .6s .34s var(--ease-expo) both; }
+        .bar  { animation: barIn  .5s .50s var(--ease-expo) both; }
+        .dot  { animation: dotIn  .3s .78s var(--ease-expo) both; }
+
+        @keyframes pLeft  { from{opacity:0;transform:translateX(-20px)} to{opacity:1;transform:none} }
+        @keyframes pRight { from{opacity:0;transform:translateX(20px)}  to{opacity:1;transform:none} }
+        @keyframes barIn  { from{opacity:0;transform:scaleX(0)} to{opacity:1;transform:none} }
+        @keyframes dotIn  { from{opacity:0;transform:scale(0)}  to{opacity:1;transform:none} }
+
+        /* Mint plates idle breathe — after 1s delay so it starts after entrance */
+        .p-il, .p-ir {
+            animation: pLeft  .6s .34s var(--ease-expo) both,
+                       mintBreathe 4s 1.5s ease-in-out infinite;
+        }
+        .p-ir { animation: pRight .6s .34s var(--ease-expo) both, mintBreathe 4s 1.5s ease-in-out infinite; }
+        @keyframes mintBreathe {
+            0%,100% { opacity:1; }
+            50%     { opacity:.72; }
+        }
+
+        /* Mint flash sweep */
+        .logo-wrap::after {
+            content: '';
+            position: absolute; inset: 0; border-radius: 22px;
+            background: linear-gradient(90deg, transparent 0%, rgba(0,229,160,.6) 50%, transparent 100%);
+            animation: mintFlash .4s .88s ease-out both;
+            pointer-events: none;
+        }
+        @keyframes mintFlash {
+            from { opacity:1; transform:translateX(-120%); }
+            to   { opacity:0; transform:translateX( 120%); }
+        }
+
+        /* Pill */
+        .hero-pill {
+            display: inline-flex; align-items: center; gap: 7px;
+            background: var(--mint-dim);
+            border: 1px solid rgba(0,229,160,.26);
+            color: var(--mint);
+            font-size: 11px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
+            padding: 6px 14px; border-radius: 100px; margin-bottom: 22px;
+            animation: heroUp .6s 1.2s var(--ease-expo) both;
+        }
+        .pill-dot {
+            width: 6px; height: 6px; border-radius: 50%; background: var(--mint);
+            animation: blink 2.2s ease-in-out infinite;
+        }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.35} }
+
+        /* Wordmark */
+        .hero-word {
+            font-family: var(--font-d);
+            font-size: clamp(72px, 13vw, 148px);
+            font-weight: 800; letter-spacing: 8px; line-height: 1; color: var(--text-hi);
+            margin-bottom: 18px;
+            animation: heroUp .75s 1.42s var(--ease-expo) both;
+        }
+
+        /* Underline */
+        .word-line {
+            width: 56px; height: 3px; background: var(--mint);
+            border-radius: 2px; margin: 0 auto 26px;
+            transform: scaleX(0); transform-origin: left;
+            animation: lineGrow .55s 2.1s var(--ease-expo) both;
+        }
+        @keyframes lineGrow { to { transform: scaleX(1); } }
+
+        .hero-tagline {
+            font-size: clamp(16px, 2.5vw, 22px); color: var(--text-lo); margin-bottom: 10px;
+            animation: heroFade .65s 2.3s ease-out both;
+        }
+        .hero-sub {
+            font-size: 16px; color: var(--text-lo); line-height: 1.7;
+            max-width: 520px; margin: 0 auto 48px;
+            animation: heroFade .65s 2.46s ease-out both;
+        }
+
+        @keyframes heroUp   { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:none} }
+        @keyframes heroFade { from{opacity:0} to{opacity:1} }
+
+        /* CTA buttons */
+        .hero-actions {
+            display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+            animation: heroFade .65s 2.62s ease-out both;
+        }
+
+        .btn-primary {
+            background: var(--mint); color: var(--bg);
+            border: none; cursor: pointer;
+            font-family: var(--font-b); font-size: 16px; font-weight: 600;
+            padding: 0 36px; height: 56px; border-radius: 16px;
+            display: flex; align-items: center; gap: 8px;
+            position: relative; overflow: hidden;
+            transition: transform .1s var(--ease-quart), opacity .2s;
+        }
+        .btn-primary:hover  { opacity:.9; }
+        .btn-primary:active { transform: scale(.94); }
+        .btn-primary .arrow {
+            transition: transform .25s var(--ease-quart);
+        }
+        .btn-primary:hover .arrow { transform: translateX(4px); }
+
+        .btn-secondary {
+            background: var(--surface-hi); color: var(--text-hi);
+            border: 1px solid var(--shimmer); cursor: pointer;
+            font-family: var(--font-b); font-size: 16px; font-weight: 600;
+            padding: 0 36px; height: 56px; border-radius: 16px;
+            display: flex; align-items: center; gap: 8px;
+            position: relative; overflow: hidden;
+            transition: transform .1s var(--ease-quart), border-color .2s;
+        }
+        .btn-secondary:hover  { border-color: var(--text-lo); }
+        .btn-secondary:active { transform: scale(.94); }
+
+        /* Ripple */
+        .ripple {
+            position: absolute; border-radius: 50%;
+            transform: scale(0); pointer-events: none;
+            background: rgba(0,0,0,.14);
+            animation: rippleOut .5s ease-out forwards;
+        }
+        @keyframes rippleOut { to { transform:scale(4); opacity:0; } }
+
+        /* Scroll indicator */
+        .scroll-cue {
+            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            animation: heroFade .7s 3.0s ease-out both;
+        }
+        .scroll-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-lo); }
+        .scroll-bar {
+            width: 1px; height: 40px; background: var(--shimmer);
+            position: relative; overflow: hidden;
+        }
+        .scroll-bar::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(to bottom, var(--mint), transparent);
+            animation: scanDrop 1.9s ease-in-out infinite;
+        }
+        @keyframes scanDrop {
+            0%   { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        /* ────────────────────────────────
+           STATS
+        ──────────────────────────────── */
+        .stats {
+            position: relative; z-index: 1;
+            background: var(--surface);
+            border-top: 1px solid var(--surface-hi);
+            border-bottom: 1px solid var(--surface-hi);
+            padding: 52px 24px;
+        }
+        .stats-inner {
+            max-width: 860px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1px 1fr 1px 1fr;
+            align-items: center;
+        }
+        .stat-div { background: var(--surface-hi); align-self: stretch; margin: 8px 0; }
+        .stat-item { text-align: center; padding: 0 32px; }
+        .stat-num {
+            font-family: var(--font-m);
+            font-size: clamp(38px, 5vw, 58px); font-weight: 500;
+            color: var(--text-hi); font-variant-numeric: tabular-nums; line-height: 1;
+        }
+        .stat-suffix { font-family: var(--font-d); font-size: .48em; font-weight: 700; color: var(--mint); }
+        .stat-lbl {
+            margin-top: 8px; font-size: 12px; font-weight: 500;
+            letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-lo);
+        }
+
+        /* ────────────────────────────────
+           FEATURES
+        ──────────────────────────────── */
+        .features { position: relative; z-index: 1; padding: 100px 24px; }
+
+        .sec-eyebrow {
+            font-size: 11px; font-weight: 600; letter-spacing: 2.5px;
+            text-transform: uppercase; color: var(--mint);
+            text-align: center; margin-bottom: 14px;
+        }
+        .sec-title {
+            font-family: var(--font-d);
+            font-size: clamp(28px, 5vw, 48px); font-weight: 800;
+            color: var(--text-hi); text-align: center;
+            line-height: 1.1; max-width: 680px; margin: 0 auto 60px;
+        }
+
+        .feat-grid {
+            max-width: 1100px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(3,1fr); gap: 20px;
+        }
+        .feat-card {
+            background: var(--surface);
+            border: 1px solid var(--surface-hi); border-radius: 22px;
+            padding: 36px 28px;
+            transition: transform .22s var(--ease-quart), border-color .22s;
+        }
+        .feat-card:hover { transform: translateY(-4px); border-color: var(--shimmer); }
+        .feat-icon {
+            width: 48px; height: 48px; border-radius: 14px;
+            background: var(--surface-hi);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 24px;
+            transition: background .22s;
+        }
+        .feat-card:hover .feat-icon { background: rgba(0,229,160,.09); }
+        .feat-title {
+            font-family: var(--font-d); font-size: 19px; font-weight: 700;
+            color: var(--text-hi); margin-bottom: 12px; line-height: 1.25;
+        }
+        .feat-desc { font-size: 15px; color: var(--text-lo); line-height: 1.65; }
+
+        /* ────────────────────────────────
+           HOW IT WORKS
+        ──────────────────────────────── */
+        .how {
+            position: relative; z-index: 1;
+            background: var(--surface);
+            border-top: 1px solid var(--surface-hi);
+            border-bottom: 1px solid var(--surface-hi);
+            padding: 100px 24px;
+        }
+        .steps {
+            max-width: 960px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(3,1fr); gap: 48px;
+            position: relative;
+        }
+        /* Connector line — draws in via JS class */
+        .steps::before {
+            content: '';
+            position: absolute; top: 24px;
+            left: calc(16.67% + 20px); right: calc(16.67% + 20px);
+            height: 1px;
+            background: linear-gradient(to right, var(--surface-hi), rgba(0,229,160,.25), var(--surface-hi));
+            transform: scaleX(0); transform-origin: left;
+            transition: transform .9s var(--ease-expo);
+        }
+        .steps.line-visible::before { transform: scaleX(1); }
+
+        .step { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; }
+        .step-num {
+            width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
+            background: var(--surface-hi); border: 1px solid var(--shimmer);
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-m); font-size: 16px; color: var(--text-hi);
+            position: relative; z-index: 1;
+        }
+        .step-num.active {
+            background: var(--mint-dim);
+            border-color: rgba(0,229,160,.4); color: var(--mint);
+        }
+        .step-title { font-family: var(--font-d); font-size: 17px; font-weight: 700; color: var(--text-hi); line-height: 1.3; }
+        .step-desc  { font-size: 14px; color: var(--text-lo); line-height: 1.65; }
+
+        /* ────────────────────────────────
+           APP PREVIEW
+        ──────────────────────────────── */
+        .preview { position: relative; z-index: 1; padding: 100px 24px; overflow: hidden; }
+        .preview-inner {
+            max-width: 1080px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+        }
+        .preview-text { display: flex; flex-direction: column; gap: 22px; }
+        .preview-title {
+            font-family: var(--font-d); font-size: clamp(26px,4vw,40px);
+            font-weight: 800; color: var(--text-hi); line-height: 1.1;
+        }
+        .preview-body { font-size: 16px; color: var(--text-lo); line-height: 1.7; }
+        .check-list   { display: flex; flex-direction: column; gap: 14px; }
+        .check-item   { display: flex; align-items: flex-start; gap: 12px; }
+        .check-icon   { flex-shrink: 0; margin-top: 2px; }
+        .check-text   { font-size: 15px; color: var(--text-lo); line-height: 1.5; }
+        .check-text strong { color: var(--text-hi); font-weight: 600; }
+
+        /* Phone */
+        .phone-wrap { display: flex; justify-content: center; }
+        .phone {
+            width: 272px;
+            background: var(--surface-hi);
+            border: 2px solid var(--shimmer);
+            border-radius: 44px;
+            padding: 0 3px 3px;
+            animation: phoneFloat 7s ease-in-out infinite;
+        }
+        @keyframes phoneFloat {
+            0%,100% { transform: translateY(0); }
+            50%     { transform: translateY(-14px); }
+        }
+        .phone-notch {
+            height: 28px; background: var(--shimmer);
+            border-radius: 0 0 18px 18px; margin: 0 72px;
+        }
+        .phone-screen {
+            background: var(--bg); border-radius: 40px;
+            padding: 16px 14px 20px; overflow: hidden;
+        }
+
+        /* App chrome */
+        .app-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+        .app-greet  { font-size: 10px; color: var(--text-lo); font-family: var(--font-b); margin-bottom: 2px; }
+        .app-name   { font-family: var(--font-d); font-size: 17px; font-weight: 800; color: var(--text-hi); }
+        .app-avatar {
+            width: 34px; height: 34px; border-radius: 50%;
+            background: var(--surface-hi); border: 1.5px solid rgba(0,229,160,.35);
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-d); font-size: 13px; font-weight: 700; color: var(--mint);
+        }
+        .app-card {
+            background: linear-gradient(135deg,#0D2016,#091A1A);
+            border: 1px solid rgba(0,229,160,.38);
+            border-radius: 18px; padding: 14px; margin-bottom: 14px;
+        }
+        .app-badge {
+            display: inline-flex; align-items: center; gap: 4px;
+            background: rgba(0,229,160,.12); border: 1px solid rgba(0,229,160,.28);
+            color: var(--mint); font-size: 8px; font-weight: 600; letter-spacing: .8px;
+            text-transform: uppercase; padding: 3px 8px; border-radius: 6px;
+            margin-bottom: 9px; font-family: var(--font-b);
+        }
+        .app-workout { font-family: var(--font-d); font-size: 14px; font-weight: 700; color: var(--text-hi); margin-bottom: 3px; }
+        .app-meta    { font-size: 10px; color: var(--text-lo); margin-bottom: 12px; font-family: var(--font-b); }
+
+        /* Session button shimmer — earned moment */
+        .app-btn {
+            background: var(--mint); color: var(--bg);
+            font-size: 11px; font-weight: 600; font-family: var(--font-b);
+            padding: 9px 14px; border-radius: 11px; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .app-btn::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(100deg, transparent 20%, rgba(255,255,255,.28) 50%, transparent 80%);
+            transform: translateX(-120%);
+            animation: shimmerScan 4s ease-in-out infinite 1.5s;
+        }
+        @keyframes shimmerScan {
+            0%,100% { transform: translateX(-120%); }
+            28%     { transform: translateX(120%); }
+        }
+
+        .app-rows    { display: flex; flex-direction: column; gap: 7px; }
+        .app-row {
+            display: flex; align-items: center; gap: 9px;
+            background: var(--surface); border-radius: 11px; padding: 9px 11px;
+            opacity: 0; transform: translateX(10px);
+        }
+        /* Rows animate in when phone enters viewport via .phone-loaded class */
+        .phone-loaded .app-row:nth-child(1) { animation: rowIn .42s .08s var(--ease-expo) both; }
+        .phone-loaded .app-row:nth-child(2) { animation: rowIn .42s .18s var(--ease-expo) both; }
+        .phone-loaded .app-row:nth-child(3) { animation: rowIn .42s .28s var(--ease-expo) both; }
+        @keyframes rowIn { to { opacity:1; transform:none; } }
+
+        .app-row-icon { width: 28px; height: 28px; background: var(--surface-hi); border-radius: 8px; flex-shrink: 0; }
+        .app-row-info { flex: 1; }
+        .app-row-name { font-size: 10px; font-weight: 600; color: var(--text-hi); font-family: var(--font-b); }
+        .app-row-sets { font-size: 9px; color: var(--text-lo); font-family: var(--font-b); }
+        .app-row-kg   { font-family: var(--font-m); font-size: 11px; color: var(--text-hi); font-variant-numeric: tabular-nums; }
+
+        /* ────────────────────────────────
+           QUOTE
+        ──────────────────────────────── */
+        .quote-sec {
+            position: relative; z-index: 1;
+            padding: 100px 24px; text-align: center; overflow: hidden;
+        }
+        .quote-sec::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(0,229,160,.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .quote-inner { max-width: 780px; margin: 0 auto; }
+        .quote-mark {
+            font-family: var(--font-d); font-size: 72px; font-weight: 800;
+            color: rgba(0,229,160,.14); line-height: .7; display: block; margin-bottom: 28px;
+        }
+        .quote-text {
+            font-family: var(--font-d); font-size: clamp(22px,3.5vw,34px);
+            font-weight: 700; color: var(--text-hi); line-height: 1.35; margin-bottom: 22px;
+            /* clip reveal from left — resolves to full width after .in class */
+            clip-path: inset(0 100% 0 0);
+            transition: clip-path 1s var(--ease-expo);
+        }
+        .quote-text.in { clip-path: inset(0 0% 0 0); }
+        .quote-data {
+            font-family: var(--font-m); font-size: 14px; color: var(--mint); letter-spacing: .5px;
+        }
+
+        /* ────────────────────────────────
+           FINAL CTA
+        ──────────────────────────────── */
+        .cta-sec {
+            position: relative; z-index: 1;
+            background: var(--surface); border-top: 1px solid var(--surface-hi);
+            padding: 110px 24px 120px; text-align: center;
+        }
+        .cta-title {
+            font-family: var(--font-d); font-size: clamp(34px,7vw,72px);
+            font-weight: 800; color: var(--text-hi); line-height: 1.05; margin-bottom: 18px;
+        }
+        .cta-sub { font-size: 17px; color: var(--text-lo); margin-bottom: 48px; }
+        .store-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .store-btn {
+            display: flex; align-items: center; gap: 12px;
+            background: var(--surface-hi); border: 1px solid var(--shimmer);
+            border-radius: 16px; padding: 14px 24px;
+            position: relative; overflow: hidden;
+            transition: transform .1s var(--ease-quart), border-color .2s;
+            cursor: pointer;
+        }
+        .store-btn:hover  { border-color: var(--text-lo); }
+        .store-btn:active { transform: scale(.94); }
+        .store-btn svg { transition: opacity .2s; }
+        .store-btn:hover svg { opacity: .85; }
+        .store-txt { display: flex; flex-direction: column; align-items: flex-start; }
+        .store-lbl  { font-size: 10px; color: var(--text-lo); }
+        .store-name { font-family: var(--font-d); font-size: 16px; font-weight: 700; color: var(--text-hi); }
+
+        /* ────────────────────────────────
+           FOOTER
+        ──────────────────────────────── */
+        .footer {
+            position: relative; z-index: 1;
+            padding: 36px 40px; border-top: 1px solid var(--surface-hi);
+            display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+        }
+        .footer-brand { display: flex; align-items: center; gap: 10px; }
+        .footer-word  { font-family: var(--font-d); font-size: 15px; font-weight: 800; letter-spacing: 3px; color: var(--text-lo); }
+        .footer-copy  { font-size: 13px; color: var(--text-lo); }
+        .footer-links { display: flex; gap: 24px; list-style: none; }
+        .footer-links a { font-size: 13px; color: var(--text-lo); transition: color .2s; }
+        .footer-links a:hover { color: var(--text-hi); }
+
+        /* ────────────────────────────────
+           SCROLL REVEALS
+        ──────────────────────────────── */
+        /* Default: fade + rise */
+        .reveal {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity .7s ease-out, transform .7s var(--ease-expo);
+        }
+        /* Stats variant: scale up */
+        .reveal-scale {
+            opacity: 0; transform: scale(.88);
+            transition: opacity .6s ease-out, transform .6s var(--ease-expo);
+        }
+        /* Slide from left */
+        .reveal-left {
+            opacity: 0; transform: translateX(-32px);
+            transition: opacity .7s ease-out, transform .7s var(--ease-expo);
+        }
+        /* Slide from right */
+        .reveal-right {
+            opacity: 0; transform: translateX(32px);
+            transition: opacity .7s ease-out, transform .7s var(--ease-expo);
+        }
+
+        .reveal.in, .reveal-scale.in, .reveal-left.in, .reveal-right.in {
+            opacity: 1; transform: none;
+        }
+
+        /* Stagger delays */
+        .d1{transition-delay:.07s} .d2{transition-delay:.15s} .d3{transition-delay:.24s}
+        .d4{transition-delay:.33s} .d5{transition-delay:.42s}
+
+        /* ────────────────────────────────
+           RESPONSIVE
+        ──────────────────────────────── */
+        @media(max-width:900px){
+            .nav-links{display:none}
+            .feat-grid{grid-template-columns:1fr}
+            .steps{grid-template-columns:1fr;gap:36px}
+            .steps::before{display:none}
+            .preview-inner{grid-template-columns:1fr}
+            .phone-wrap{order:-1}
+            .stats-inner{grid-template-columns:1fr;gap:36px}
+            .stat-div{display:none}
+        }
+        @media(max-width:600px){
+            .nav{padding:18px 20px}
+            .nav.scrolled{padding:12px 20px}
+            .footer{padding:28px 20px;flex-direction:column;text-align:center}
+        }
+        @media(prefers-reduced-motion:reduce){
+            *,*::before,*::after{
+                animation-duration:.01ms!important;
+                animation-iteration-count:1!important;
+                transition-duration:.01ms!important;
+            }
+            .reveal,.reveal-scale,.reveal-left,.reveal-right{opacity:1;transform:none}
+            .quote-text{clip-path:none}
+            .steps::before{transform:none}
+            .app-row{opacity:1;transform:none}
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+    <div class="nav-brand">
+        <svg width="34" height="34" viewBox="0 0 96 96" fill="none">
+            <rect width="96" height="96" rx="22" fill="#151B2B"/>
+            <rect x="18" y="32" width="5" height="32" rx="1.5" fill="#8A93A6" opacity=".55"/>
+            <rect x="73" y="32" width="5" height="32" rx="1.5" fill="#8A93A6" opacity=".55"/>
+            <rect x="26" y="26" width="5" height="44" rx="1.5" fill="#8A93A6"/>
+            <rect x="65" y="26" width="5" height="44" rx="1.5" fill="#8A93A6"/>
+            <rect x="34" y="18" width="5" height="60" rx="1.5" fill="#00E5A0"/>
+            <rect x="57" y="18" width="5" height="60" rx="1.5" fill="#00E5A0"/>
+            <rect x="18" y="46" width="60" height="4" rx="1.5" fill="#F5F7FA"/>
+            <circle cx="48" cy="48" r="2.5" fill="#0B0F1A"/>
+        </svg>
+        <span class="nav-word">HEAFT</span>
+    </div>
+    <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#app">The App</a></li>
+    </ul>
+    <button class="nav-cta" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">
+        Get Access
+    </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-ambient"></div>
+
+    <div class="logo-wrap">
+        <svg class="logo-svg" viewBox="0 0 96 96" fill="none">
+            <rect width="96" height="96" rx="22" fill="#151B2B"/>
+            <rect class="p-ol" x="18" y="32" width="5" height="32" rx="1.5" fill="#8A93A6" opacity=".55"/>
+            <rect class="p-or" x="73" y="32" width="5" height="32" rx="1.5" fill="#8A93A6" opacity=".55"/>
+            <rect class="p-ml" x="26" y="26" width="5" height="44" rx="1.5" fill="#8A93A6"/>
+            <rect class="p-mr" x="65" y="26" width="5" height="44" rx="1.5" fill="#8A93A6"/>
+            <rect class="p-il" x="34" y="18" width="5" height="60" rx="1.5" fill="#00E5A0"/>
+            <rect class="p-ir" x="57" y="18" width="5" height="60" rx="1.5" fill="#00E5A0"/>
+            <rect class="bar"  x="18" y="46" width="60" height="4" rx="1.5" fill="#F5F7FA"/>
+            <circle class="dot" cx="48" cy="48" r="2.5" fill="#0B0F1A"/>
+        </svg>
+    </div>
+
+    <div class="hero-pill">
+        <span class="pill-dot"></span>
+        READY · 1:1 AI COACH
+    </div>
+
+    <h1 class="hero-word">HEAFT</h1>
+    <div class="word-line"></div>
+    <p class="hero-tagline">Train without doubt.</p>
+    <p class="hero-sub">Your AI personal asset for training. Every rep has a reason, every weight is justified, every day's plan is grounded in real data.</p>
+
+    <div class="hero-actions">
+        <a href="#download" class="btn-primary js-ripple">
+            Get Early Access
+            <svg class="arrow" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                <path d="M3 7.5h9M8.5 4l3.5 3.5L8.5 11" stroke="#0B0F1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+        <a href="#how" class="btn-secondary js-ripple">See How It Works</a>
+    </div>
+
+    <div class="scroll-cue">
+        <span class="scroll-label">Scroll</span>
+        <div class="scroll-bar"></div>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+    <div class="stats-inner">
+        <div class="stat-item reveal-scale">
+            <div class="stat-num"><span class="counter" data-to="14200" data-fmt="comma">0</span><span class="stat-suffix">+</span></div>
+            <div class="stat-lbl">Workouts Logged</div>
+        </div>
+        <div class="stat-div"></div>
+        <div class="stat-item reveal-scale d2">
+            <div class="stat-num"><span class="counter" data-to="91" data-fmt="int">0</span><span class="stat-suffix">%</span></div>
+            <div class="stat-lbl">PRs Hit When Prescribed</div>
+        </div>
+        <div class="stat-div"></div>
+        <div class="stat-item reveal-scale d4">
+            <div class="stat-num"><span class="counter" data-to="2.4" data-fmt="dec">0</span><span class="stat-suffix">×</span></div>
+            <div class="stat-lbl">Faster Progress</div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+    <p class="sec-eyebrow reveal">Intelligence</p>
+    <h2 class="sec-title reveal d1">The AI that lifts with you.</h2>
+    <div class="feat-grid">
+
+        <div class="feat-card reveal d1">
+            <div class="feat-icon">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                    <rect x="2" y="5"  width="14" height="2" rx="1" fill="#00E5A0"/>
+                    <rect x="2" y="10" width="10" height="2" rx="1" fill="#8A93A6"/>
+                    <rect x="2" y="15" width="7"  height="2" rx="1" fill="#8A93A6"/>
+                    <rect x="17" y="9"  width="3" height="7"   rx="1" fill="#00E5A0" opacity=".5"/>
+                    <rect x="16" y="6"  width="5" height="3"   rx="1" fill="#00E5A0" opacity=".3"/>
+                    <rect x="16" y="16" width="5" height="2.5" rx="1" fill="#00E5A0" opacity=".3"/>
+                </svg>
+            </div>
+            <h3 class="feat-title">Your plan. Remembered.</h3>
+            <p class="feat-desc">Upload any program — PDF, spreadsheet, photo. HEAFT digitizes it, tracks every session, and builds a complete history. From day one, the AI knows exactly where you are.</p>
+        </div>
+
+        <div class="feat-card reveal d2">
+            <div class="feat-icon">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                    <circle cx="11" cy="11" r="8.5" stroke="#1F2740" stroke-width="1.5"/>
+                    <path d="M7 11c0-2.2 1.8-4 4-4" stroke="#00E5A0" stroke-width="1.8" stroke-linecap="round"/>
+                    <circle cx="11" cy="11" r="2" fill="#00E5A0"/>
+                    <path d="M11 4v1.5M11 15.5V17M4 11h1.5M15.5 11H17" stroke="#8A93A6" stroke-width="1.3" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h3 class="feat-title">Every weight, justified.</h3>
+            <p class="feat-desc">HEAFT knows your last PR, your bar speed trend, and your recovery. It prescribes exact loads — not ranges. A specific weight with a specific reason.</p>
+        </div>
+
+        <div class="feat-card reveal d3">
+            <div class="feat-icon">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                    <path d="M3 16L7 12l3 3 5-6 4 2" stroke="#00E5A0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <rect x="3" y="17.5" width="16" height="1.5" rx=".75" fill="#1F2740"/>
+                </svg>
+            </div>
+            <h3 class="feat-title">Adapts. Automatically.</h3>
+            <p class="feat-desc">Missed a session? Crushed your PR? HEAFT recalculates next week's load based on what actually happened — not what was scheduled. The plan is always current.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+    <p class="sec-eyebrow reveal">Process</p>
+    <h2 class="sec-title reveal d1">Day one to done.</h2>
+    <div class="steps" id="steps">
+        <div class="step reveal-left d1">
+            <div class="step-num">01</div>
+            <h3 class="step-title">Tell HEAFT your baseline.</h3>
+            <p class="step-desc">Enter your current lifts, upload your plan, or let the AI build one from your goals and body metrics. Setup takes under five minutes.</p>
+        </div>
+        <div class="step reveal d2">
+            <div class="step-num active">02</div>
+            <h3 class="step-title">Follow today's session.</h3>
+            <p class="step-desc">HEAFT tells you what to lift, in what order, with how much rest. Log each set with one tap. Rest timer starts automatically.</p>
+        </div>
+        <div class="step reveal-right d3">
+            <div class="step-num">03</div>
+            <h3 class="step-title">HEAFT adjusts. You show up.</h3>
+            <p class="step-desc">After every session the AI updates your load for next week. No spreadsheets, no guesswork. Just show up and lift what it tells you.</p>
+        </div>
+    </div>
+</section>
+
+<!-- APP PREVIEW -->
+<section class="preview" id="app">
+    <div class="preview-inner">
+
+        <!-- Phone -->
+        <div class="phone-wrap reveal-left" id="phone-wrap">
+            <div class="phone" id="phone">
+                <div class="phone-notch"></div>
+                <div class="phone-screen">
+                    <div class="app-header">
+                        <div>
+                            <div class="app-greet">Good morning</div>
+                            <div class="app-name">Alex.</div>
+                        </div>
+                        <div class="app-avatar">A</div>
+                    </div>
+                    <div class="app-card">
+                        <div class="app-badge">
+                            <svg width="5" height="5" viewBox="0 0 5 5"><circle cx="2.5" cy="2.5" r="2.5" fill="#00E5A0"/></svg>
+                            TODAY · DAY 3
+                        </div>
+                        <div class="app-workout">Push A — Chest Heavy</div>
+                        <div class="app-meta">6 exercises · 68 min est.</div>
+                        <div class="app-btn">Start Session →</div>
+                    </div>
+                    <div class="app-rows" id="app-rows">
+                        <div class="app-row">
+                            <div class="app-row-icon"></div>
+                            <div class="app-row-info">
+                                <div class="app-row-name">Bench Press</div>
+                                <div class="app-row-sets">4 × 5 · RPE 8</div>
+                            </div>
+                            <div class="app-row-kg">82.5 kg</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-row-icon"></div>
+                            <div class="app-row-info">
+                                <div class="app-row-name">Incline DB Press</div>
+                                <div class="app-row-sets">3 × 10 · RPE 7</div>
+                            </div>
+                            <div class="app-row-kg">30 kg</div>
+                        </div>
+                        <div class="app-row">
+                            <div class="app-row-icon"></div>
+                            <div class="app-row-info">
+                                <div class="app-row-name">Overhead Press</div>
+                                <div class="app-row-sets">3 × 8 · RPE 7</div>
+                            </div>
+                            <div class="app-row-kg">52.5 kg</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Text -->
+        <div class="preview-text">
+            <p class="sec-eyebrow reveal">The App</p>
+            <h2 class="preview-title reveal d1">Built for the gym floor.</h2>
+            <p class="preview-body reveal d2">Dim light. Sweaty hands. Split attention. HEAFT is designed for the actual conditions of training — not a wellness dashboard you check at your desk.</p>
+            <div class="check-list">
+                <div class="check-item reveal d2">
+                    <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <circle cx="10" cy="10" r="9" stroke="#1F2740" stroke-width="1.5"/>
+                        <path d="M6 10l3 3 5-5" stroke="#00E5A0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="check-text"><strong>One tap to log a set.</strong> No confirmation dialogs. No spinners on the critical path.</span>
+                </div>
+                <div class="check-item reveal d3">
+                    <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <circle cx="10" cy="10" r="9" stroke="#1F2740" stroke-width="1.5"/>
+                        <path d="M6 10l3 3 5-5" stroke="#00E5A0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="check-text"><strong>Automatic rest timer.</strong> Counts down the moment you log a set. Alerts when you're ready.</span>
+                </div>
+                <div class="check-item reveal d4">
+                    <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <circle cx="10" cy="10" r="9" stroke="#1F2740" stroke-width="1.5"/>
+                        <path d="M6 10l3 3 5-5" stroke="#00E5A0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="check-text"><strong>Arabic and English.</strong> Full RTL support — same coach, same experience, no compromises.</span>
+                </div>
+                <div class="check-item reveal d5">
+                    <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <circle cx="10" cy="10" r="9" stroke="#1F2740" stroke-width="1.5"/>
+                        <path d="M6 10l3 3 5-5" stroke="#00E5A0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="check-text"><strong>Dark. Always.</strong> Gym lighting is dim. The palette exists for physiological reasons.</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-sec">
+    <div class="quote-inner">
+        <span class="quote-mark reveal">"</span>
+        <p class="quote-text" id="quote-text">The AI doesn't ask how you feel.<br>It tells you what to lift — because it already knows.</p>
+        <p class="quote-data reveal d2">Bench 82.5 kg × 5. Up 2.5 from last week.</p>
+    </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-sec" id="download">
+    <p class="sec-eyebrow reveal">Early Access</p>
+    <h2 class="cta-title reveal d1">Ready to train<br>without doubt?</h2>
+    <p class="cta-sub reveal d2">Available on iOS and Android. Join the waitlist.</p>
+    <div class="store-row reveal d3">
+        <a href="#" class="store-btn js-ripple">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#F5F7FA">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+            </svg>
+            <div class="store-txt">
+                <span class="store-lbl">Download on the</span>
+                <span class="store-name">App Store</span>
+            </div>
+        </a>
+        <a href="#" class="store-btn js-ripple">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#F5F7FA">
+                <path d="M3.18 23.76c.3.17.64.24 1 .2L15.34 12 11.5 8.16 3.18 23.76zM20.06 10.37l-2.78-1.6-3.84 3.84 3.84 3.84 2.82-1.62a1.99 1.99 0 000-4.46zM2 2.54v18.92L13.16 12 2 2.54zM11.5 15.84l3.84 3.84-10.16 5.88L11.5 15.84z"/>
+            </svg>
+            <div class="store-txt">
+                <span class="store-lbl">Get it on</span>
+                <span class="store-name">Google Play</span>
+            </div>
+        </a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-brand">
+        <svg width="26" height="26" viewBox="0 0 96 96" fill="none">
+            <rect width="96" height="96" rx="22" fill="#151B2B"/>
+            <rect x="18" y="32" width="5" height="32" rx="1.5" fill="#8A93A6" opacity=".55"/>
+            <rect x="73" y="32" width="5" height="32" rx="1.5" fill="#8A93A6" opacity=".55"/>
+            <rect x="26" y="26" width="5" height="44" rx="1.5" fill="#8A93A6"/>
+            <rect x="65" y="26" width="5" height="44" rx="1.5" fill="#8A93A6"/>
+            <rect x="34" y="18" width="5" height="60" rx="1.5" fill="#00E5A0"/>
+            <rect x="57" y="18" width="5" height="60" rx="1.5" fill="#00E5A0"/>
+            <rect x="18" y="46" width="60" height="4" rx="1.5" fill="#F5F7FA"/>
+            <circle cx="48" cy="48" r="2.5" fill="#0B0F1A"/>
+        </svg>
+        <span class="footer-word">HEAFT</span>
+    </div>
+    <span class="footer-copy">© 2026 HEAFT. All rights reserved.</span>
+    <ul class="footer-links">
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="mailto:support@heaft.app">Contact</a></li>
+    </ul>
+</footer>
+
+<script>
+    /* ── NAV ── */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50), {passive:true});
+
+    /* ── SCROLL REVEAL ── */
+    const revealIO = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('in');
+                revealIO.unobserve(e.target);
+            }
+        });
+    }, {threshold: 0.13});
+
+    document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right')
+        .forEach(el => revealIO.observe(el));
+
+    /* ── STEPS LINE ── */
+    const stepsEl = document.getElementById('steps');
+    const stepsIO = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                // Delay line slightly so step nodes arrive first
+                setTimeout(() => stepsEl.classList.add('line-visible'), 350);
+                stepsIO.unobserve(e.target);
+            }
+        });
+    }, {threshold: 0.4});
+    stepsIO.observe(stepsEl);
+
+    /* ── PHONE ROWS ── */
+    const phoneWrap = document.getElementById('phone-wrap');
+    const phone     = document.getElementById('phone');
+    const phoneIO   = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                phone.classList.add('phone-loaded');
+                phoneIO.unobserve(e.target);
+            }
+        });
+    }, {threshold: 0.5});
+    phoneIO.observe(phoneWrap);
+
+    /* ── QUOTE CLIP REVEAL ── */
+    const quoteText = document.getElementById('quote-text');
+    const quoteIO   = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                quoteText.classList.add('in');
+                quoteIO.unobserve(e.target);
+            }
+        });
+    }, {threshold: 0.4});
+    quoteIO.observe(quoteText);
+
+    /* ── COUNTERS ── */
+    function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+
+    function runCounter(el) {
+        const to  = parseFloat(el.dataset.to);
+        const fmt = el.dataset.fmt;
+        const dur = 1800;
+        const t0  = performance.now();
+        (function tick(now) {
+            const p = Math.min((now - t0) / dur, 1);
+            const v = to * easeOutExpo(p);
+            el.textContent = fmt === 'dec'
+                ? v.toFixed(1)
+                : fmt === 'comma'
+                    ? Math.round(v).toLocaleString()
+                    : Math.round(v);
+            if (p < 1) requestAnimationFrame(tick);
+        })(t0);
+    }
+
+    const counterIO = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) { runCounter(e.target); counterIO.unobserve(e.target); }
+        });
+    }, {threshold: 0.5});
+    document.querySelectorAll('.counter').forEach(el => counterIO.observe(el));
+
+    /* ── RIPPLE ── */
+    document.querySelectorAll('.js-ripple').forEach(btn => {
+        btn.addEventListener('click', e => {
+            const r    = btn.getBoundingClientRect();
+            const d    = Math.max(btn.clientWidth, btn.clientHeight);
+            const span = document.createElement('span');
+            span.className = 'ripple';
+            span.style.cssText = `
+                width:${d}px;height:${d}px;
+                left:${e.clientX - r.left - d/2}px;
+                top:${e.clientY - r.top  - d/2}px;
+            `;
+            btn.appendChild(span);
+            setTimeout(() => span.remove(), 600);
+        });
+    });
+</script>
+</body>
+</html>
