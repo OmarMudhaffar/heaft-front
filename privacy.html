@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — HEAFT</title>
+    <meta name="description" content="HEAFT Privacy Policy. Learn how we collect, use, and protect your personal data.">
+    <link rel="canonical" href="https://heaft.app/privacy">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0B0F1A">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://heaft.app/privacy">
+    <meta property="og:site_name" content="HEAFT">
+    <meta property="og:title" content="Privacy Policy — HEAFT">
+    <meta property="og:description" content="HEAFT Privacy Policy. Learn how we collect, use, and protect your personal data.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' rx='22' fill='%230B0F1A'/%3E%3Crect x='18' y='32' width='5' height='32' rx='1.5' fill='%238A93A6' opacity='.55'/%3E%3Crect x='73' y='32' width='5' height='32' rx='1.5' fill='%238A93A6' opacity='.55'/%3E%3Crect x='26' y='26' width='5' height='44' rx='1.5' fill='%238A93A6'/%3E%3Crect x='65' y='26' width='5' height='44' rx='1.5' fill='%238A93A6'/%3E%3Crect x='34' y='18' width='5' height='60' rx='1.5' fill='%2300E5A0'/%3E%3Crect x='57' y='18' width='5' height='60' rx='1.5' fill='%2300E5A0'/%3E%3Crect x='18' y='46' width='60' height='4' rx='1.5' fill='%23F5F7FA'/%3E%3Ccircle cx='48' cy='48' r='2.5' fill='%230B0F1A'/%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg:         #0B0F1A;
+            --surface:    #151B2B;
+            --surface-hi: #1F2740;
+            --mint:       #00E5A0;
+            --mint-dim:   rgba(0,229,160,0.10);
+            --text-hi:    #F5F7FA;
+            --text-lo:    #8A93A6;
+            --text-mid:   #B8BFD0;
+            --font-d: 'Sora', system-ui, sans-serif;
+            --font-b: 'Inter', system-ui, sans-serif;
+            --ease-quart: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--bg);
+            color: var(--text-hi);
+            font-family: var(--font-b);
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.7;
+        }
+        a { color: var(--mint); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        body::before {
+            content: '';
+            position: fixed; inset: 0;
+            background-image: radial-gradient(circle, rgba(31,39,64,.9) 1px, transparent 1px);
+            background-size: 32px 32px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* NAV */
+        .nav {
+            position: sticky; top: 0;
+            z-index: 100;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 18px 40px;
+            background: rgba(11,15,26,.92);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--surface-hi);
+        }
+        .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .nav-word {
+            font-family: var(--font-d); font-size: 17px;
+            font-weight: 800; letter-spacing: 3.5px; color: var(--text-hi);
+        }
+        .nav-back {
+            font-size: 13px; color: var(--text-lo);
+            display: flex; align-items: center; gap: 6px;
+            transition: color .2s;
+        }
+        .nav-back:hover { color: var(--text-hi); text-decoration: none; }
+        .nav-back svg { transition: transform .2s var(--ease-quart); }
+        .nav-back:hover svg { transform: translateX(-3px); }
+
+        /* CONTENT */
+        .wrap {
+            position: relative; z-index: 1;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 72px 24px 96px;
+        }
+
+        .page-label {
+            font-size: 12px; font-weight: 600; letter-spacing: 2.5px;
+            color: var(--mint); text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        h1 {
+            font-family: var(--font-d); font-size: clamp(28px, 5vw, 42px);
+            font-weight: 800; line-height: 1.15;
+            color: var(--text-hi); margin-bottom: 12px;
+        }
+        .effective {
+            font-size: 13px; color: var(--text-lo);
+            margin-bottom: 56px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--surface-hi);
+        }
+
+        /* SECTIONS */
+        .section { margin-bottom: 48px; }
+        h2 {
+            font-family: var(--font-d); font-size: 18px; font-weight: 700;
+            color: var(--text-hi); margin-bottom: 16px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        h2 .num {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 26px; height: 26px; border-radius: 6px;
+            background: var(--mint-dim); border: 1px solid rgba(0,229,160,.2);
+            font-size: 11px; font-weight: 700; color: var(--mint);
+            flex-shrink: 0;
+        }
+
+        p { color: var(--text-mid); margin-bottom: 14px; font-size: 15px; }
+        p:last-child { margin-bottom: 0; }
+
+        ul {
+            list-style: none;
+            margin: 12px 0 14px;
+            display: flex; flex-direction: column; gap: 8px;
+        }
+        ul li {
+            font-size: 15px; color: var(--text-mid);
+            padding-left: 18px; position: relative;
+        }
+        ul li::before {
+            content: '';
+            position: absolute; left: 0; top: 9px;
+            width: 5px; height: 5px; border-radius: 50%;
+            background: var(--mint); opacity: .6;
+        }
+
+        /* TABLE */
+        .table-wrap { overflow-x: auto; margin: 16px 0; }
+        table {
+            width: 100%; border-collapse: collapse;
+            font-size: 14px;
+        }
+        th {
+            text-align: left; padding: 10px 14px;
+            font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+            text-transform: uppercase; color: var(--text-lo);
+            border-bottom: 1px solid var(--surface-hi);
+        }
+        td {
+            padding: 12px 14px; color: var(--text-mid);
+            border-bottom: 1px solid rgba(31,39,64,.6);
+            vertical-align: top;
+        }
+        tr:last-child td { border-bottom: none; }
+        td:first-child { color: var(--text-hi); font-weight: 500; }
+
+        /* CALLOUT */
+        .callout {
+            background: var(--mint-dim);
+            border: 1px solid rgba(0,229,160,.18);
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin: 20px 0;
+        }
+        .callout p { color: var(--text-mid); margin: 0; font-size: 14px; }
+        .callout strong { color: var(--mint); }
+
+        /* FOOTER */
+        .footer {
+            position: relative; z-index: 1;
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: 16px;
+            padding: 28px 40px;
+            border-top: 1px solid var(--surface-hi);
+        }
+        .footer-brand { display: flex; align-items: center; gap: 10px; }
+        .footer-word { font-family: var(--font-d); font-size: 15px; font-weight: 800; letter-spacing: 3px; color: var(--text-lo); }
+        .footer-copy { font-size: 13px; color: var(--text-lo); }
+        .footer-links { display: flex; gap: 24px; list-style: none; }
+        .footer-links a { font-size: 13px; color: var(--text-lo); transition: color .2s; }
+        .footer-links a:hover { color: var(--text-hi); text-decoration: none; }
+
+        @media (max-width: 600px) {
+            .nav { padding: 16px 20px; }
+            .wrap { padding: 48px 20px 72px; }
+            .footer { padding: 24px 20px; flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <a href="/" class="nav-brand">
+        <svg width="28" height="28" viewBox="0 0 96 96" fill="none">
+            <rect width="96" height="96" rx="22" fill="#151B2B"/>
+            <rect x="18" y="32" width="5" height="32" rx="1.5" fill="#8A93A6" opacity=".55"/>
+            <rect x="73" y="32" width="5" height="32" rx="1.5" fill="#8A93A6" opacity=".55"/>
+            <rect x="26" y="26" width="5" height="44" rx="1.5" fill="#8A93A6"/>
+            <rect x="65" y="26" width="5" height="44" rx="1.5" fill="#8A93A6"/>
+            <rect x="34" y="18" width="5" height="60" rx="1.5" fill="#00E5A0"/>
+            <rect x="57" y="18" width="5" height="60" rx="1.5" fill="#00E5A0"/>
+            <rect x="18" y="46" width="60" height="4" rx="1.5" fill="#F5F7FA"/>
+            <circle cx="48" cy="48" r="2.5" fill="#0B0F1A"/>
+        </svg>
+        <span class="nav-word">HEAFT</span>
+    </a>
+    <a href="/" class="nav-back">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to home
+    </a>
+</nav>
+
+<main class="wrap">
+    <p class="page-label">Legal</p>
+    <h1>Privacy Policy</h1>
+    <p class="effective">Effective date: April 25, 2026 &nbsp;·&nbsp; Last updated: April 25, 2026</p>
+
+    <div class="section">
+        <p>HEAFT ("we", "our", or "us") is committed to protecting your personal information. This policy explains what data we collect, why we collect it, how we use it, and your rights regarding it. By using the HEAFT app you agree to the practices described here.</p>
+        <p>Questions? Email us at <a href="mailto:support@heaft.app">support@heaft.app</a> — we respond within 2 business days.</p>
+    </div>
+
+    <div class="section">
+        <h2><span class="num">1</span> Information We Collect</h2>
+        <p>We collect only what is necessary to deliver a personalised training experience.</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Examples</th>
+                        <th>Why we need it</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Account data</td>
+                        <td>Name, email address, profile photo</td>
+                        <td>Create and secure your account</td>
+                    </tr>
+                    <tr>
+                        <td>Fitness data</td>
+                        <td>Body weight, workout history, exercise logs, goals, fitness level</td>
+                        <td>Generate personalised plans and track progress</td>
+                    </tr>
+                    <tr>
+                        <td>AI conversation data</td>
+                        <td>Messages sent to the AI coach</td>
+                        <td>Provide contextual coaching responses</td>
+                    </tr>
+                    <tr>
+                        <td>Device data</td>
+                        <td>Push notification tokens, device type, OS version</td>
+                        <td>Send workout reminders and app notifications</td>
+                    </tr>
+                    <tr>
+                        <td>Usage data</td>
+                        <td>Feature interactions, session duration, app errors</td>
+                        <td>Improve reliability and product quality</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>We do not collect payment information directly. We do not access your contacts, microphone, camera, or location.</p>
+    </div>
+
+    <div class="section">
+        <h2><span class="num">2</span> How We Use Your Information</h2>
+        <ul>
+            <li>Generate and adapt personalised workout and nutrition plans</li>
+            <li>Power the AI coaching feature with contextual fitness knowledge</li>
+            <li>Authenticate your account securely via Firebase</li>
+            <li>Send transactional emails (account verification, password reset) via Resend</li>
+            <li>Deliver push notifications for workout reminders and milestones</li>
+            <li>Diagnose bugs and improve app performance</li>
+            <li>Comply with applicable laws and prevent fraud</li>
+        </ul>
+        <p>We do not use your data for advertising or sell it to any third party, ever.</p>
+    </div>
+
+    <div class="section">
+        <h2><span class="num">3</span> Third-Party Services</h2>
+        <p>HEAFT relies on the following sub-processors to operate. Each is bound by their own privacy policy and data processing agreements.</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Provider</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Firebase Authentication</td>
+                        <td>Google LLC</td>
+                        <td>Account sign-in (email, Google, Apple)</td>
+                    </tr>
+                    <tr>
+                        <td>Firebase Cloud Messaging</td>
+                        <td>Google LLC</td>
+                        <td>Push notifications</td>
+                    </tr>
+                    <tr>
+                        <td>Gemini API</td>
+                        <td>Google LLC</td>
+                        <td>AI workout generation</td>
+                    </tr>
+                    <tr>
+                        <td>Groq API</td>
+                        <td>Groq Inc.</td>
+                        <td>AI coaching responses</td>
+                    </tr>
+                    <tr>
+                        <td>Together AI</td>
+                        <td>Together Computer Inc.</td>
+                        <td>AI fallback inference</td>
+                    </tr>
+                    <tr>
+                        <td>Resend</td>
+                        <td>Resend Inc.</td>
+                        <td>Transactional email delivery</td>
+                    </tr>
+                    <tr>
+                        <td>DigitalOcean</td>
+                        <td>DigitalOcean LLC</td>
+                        <td>Cloud infrastructure and database hosting</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>AI providers receive only the minimum data required to generate a response (your fitness context and the conversation message). Your name and email are never sent to AI providers.</p>
+    </div>
+
+    <div class="section">
+        <h2><span class="num">4</span> Data Storage and Security</h2>
+        <p>Your data is stored in a PostgreSQL database hosted on DigitalOcean infrastructure. We apply the following protections:</p>
+        <ul>
+            <li>All data in transit encrypted with TLS 1.2+</li>
+            <li>Passwords are never stored — authentication is handled by Firebase</li>
+            <li>JWT tokens for session management with short expiry windows</li>
+            <li>Database accessible only from internal network (no public port)</li>
+            <li>Regular automated backups retained for 7 days</li>
+        </ul>
+        <p>No system is 100% secure. If you discover a security issue, please disclose it responsibly to <a href="mailto:support@heaft.app">support@heaft.app</a>.</p>
+    </div>
+
+    <div class="section">
+        <h2><span class="num">5</span> Data Retention</h2>
+        <p>We retain your data for as long as your account is active. If you delete your account:</p>
+        <ul>
+            <li>Your profile, workout history, and AI conversation data are deleted within 30 days</li>
+            <li>Anonymised, non-identifiable aggregate statistics may be retained indefinitely</li>
+            <li>Backup copies are purged within 7 days of account deletion</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2><span class="num">6</span> Your Rights</h2>
+        <p>Depending on where you live, you may have the following rights regarding your personal data:</p>
+        <ul>
+            <li><strong style="color:var(--text-hi)">Access</strong> — request a copy of the data we hold about you</li>
+            <li><strong style="color:var(--text-hi)">Correction</strong> — ask us to fix inaccurate or incomplete data</li>
+            <li><strong style="color:var(--text-hi)">Deletion</strong> — request that we delete your account and associated data</li>
+            <li><strong style="color:var(--text-hi)">Portability</strong> — receive your data in a machine-readable format</li>
+            <li><strong style="color:var(--text-hi)">Objection</strong> — opt out of any processing not strictly necessary to deliver the service</li>
+        </ul>
+        <div class="callout">
+            <p>To exercise any of these rights, email <strong>support@heaft.app</strong> with the subject line "Privacy Request". We will respond within 30 days.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2><span class="num">7</span> Children's Privacy</h2>
+        <p>HEAFT is not directed at children under 13. We do not knowingly collect personal information from anyone under 13. If you believe a child has provided us with personal data, contact us at <a href="mailto:support@heaft.app">support@heaft.app</a> and we will delete it promptly.</p>
+    </div>
+
+    <div class="section">
+        <h2><span class="num">8</span> Changes to This Policy</h2>
+        <p>We may update this policy from time to time. When we make material changes, we will notify you via in-app notification or email at least 14 days before the change takes effect. Continued use of the app after that date constitutes acceptance of the updated policy.</p>
+        <p>The current version is always available at <a href="https://heaft.app/privacy">heaft.app/privacy</a>.</p>
+    </div>
+
+    <div class="section">
+        <h2><span class="num">9</span> Contact Us</h2>
+        <p>For any privacy-related questions, data requests, or concerns:</p>
+        <ul>
+            <li>Email: <a href="mailto:support@heaft.app">support@heaft.app</a></li>
+            <li>Response time: within 2 business days</li>
+        </ul>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="footer-brand">
+        <svg width="22" height="22" viewBox="0 0 96 96" fill="none">
+            <rect width="96" height="96" rx="22" fill="#151B2B"/>
+            <rect x="18" y="32" width="5" height="32" rx="1.5" fill="#8A93A6" opacity=".55"/>
+            <rect x="73" y="32" width="5" height="32" rx="1.5" fill="#8A93A6" opacity=".55"/>
+            <rect x="26" y="26" width="5" height="44" rx="1.5" fill="#8A93A6"/>
+            <rect x="65" y="26" width="5" height="44" rx="1.5" fill="#8A93A6"/>
+            <rect x="34" y="18" width="5" height="60" rx="1.5" fill="#00E5A0"/>
+            <rect x="57" y="18" width="5" height="60" rx="1.5" fill="#00E5A0"/>
+            <rect x="18" y="46" width="60" height="4" rx="1.5" fill="#F5F7FA"/>
+            <circle cx="48" cy="48" r="2.5" fill="#0B0F1A"/>
+        </svg>
+        <span class="footer-word">HEAFT</span>
+    </div>
+    <span class="footer-copy">© 2026 HEAFT. All rights reserved.</span>
+    <ul class="footer-links">
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="mailto:support@heaft.app">Contact</a></li>
+    </ul>
+</footer>
+
+</body>
+</html>
