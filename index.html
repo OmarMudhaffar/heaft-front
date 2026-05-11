@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HEAFT — Train Without Doubt</title>
-    <meta name="description" content="HEAFT is the AI fitness app that justifies every rep, every weight, and every workout plan with real data. Train smarter, not harder.">
+    <title>HEAFT — Coming Soon · iOS Beta Open</title>
+    <meta name="description" content="HEAFT is the AI fitness app that justifies every rep, every weight, and every workout plan with real data. iOS beta open via TestFlight — join us before launch.">
     <link rel="canonical" href="https://heaft.app">
     <meta name="robots" content="index, follow">
     <meta name="author" content="HEAFT">
     <meta name="theme-color" content="#0B0F1A">
-    <meta name="keywords" content="AI fitness app, AI personal trainer, workout planner, strength training, gym app, AI coach, smart training">
+    <meta name="keywords" content="AI fitness app, AI personal trainer, workout planner, strength training, gym app, AI coach, smart training, iOS beta, TestFlight">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://heaft.app">
     <meta property="og:site_name" content="HEAFT">
-    <meta property="og:title" content="HEAFT — Train Without Doubt">
-    <meta property="og:description" content="HEAFT is the AI fitness app that justifies every rep, every weight, and every workout plan with real data. Train smarter, not harder.">
+    <meta property="og:title" content="HEAFT — Coming Soon · iOS Beta Open">
+    <meta property="og:description" content="The AI personal trainer that justifies every rep with real data. iOS beta open now via TestFlight.">
     <meta property="og:image" content="https://heaft.app/og.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -25,8 +25,8 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="HEAFT — Train Without Doubt">
-    <meta name="twitter:description" content="HEAFT is the AI fitness app that justifies every rep, every weight, and every workout plan with real data. Train smarter, not harder.">
+    <meta name="twitter:title" content="HEAFT — Coming Soon · iOS Beta Open">
+    <meta name="twitter:description" content="The AI personal trainer that justifies every rep with real data. iOS beta open now via TestFlight.">
     <meta name="twitter:image" content="https://heaft.app/og.png">
 
     <!-- Favicon (inline SVG — no file needed) -->
@@ -61,15 +61,17 @@
         {
           "@type": "MobileApplication",
           "name": "HEAFT",
-          "description": "AI-powered fitness training app that justifies every rep, weight, and workout plan with real data.",
+          "description": "AI-powered fitness training app that justifies every rep, weight, and workout plan with real data. Currently in iOS beta via TestFlight.",
           "applicationCategory": "HealthApplication",
-          "operatingSystem": "iOS, Android",
+          "operatingSystem": "iOS",
           "url": "https://heaft.app",
+          "downloadUrl": "https://testflight.apple.com/join/CYNtK4at",
           "publisher": { "@id": "https://heaft.app/#organization" },
           "offers": {
             "@type": "Offer",
             "price": "0",
-            "priceCurrency": "USD"
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/PreOrder"
           }
         }
       ]
@@ -370,11 +372,12 @@
         .stat-div { background: var(--surface-hi); align-self: stretch; margin: 8px 0; }
         .stat-item { text-align: center; padding: 0 32px; }
         .stat-num {
-            font-family: var(--font-m);
-            font-size: clamp(38px, 5vw, 58px); font-weight: 500;
-            color: var(--text-hi); font-variant-numeric: tabular-nums; line-height: 1;
+            font-family: var(--font-d);
+            font-size: clamp(28px, 4vw, 42px); font-weight: 800;
+            color: var(--text-hi); line-height: 1.05;
         }
-        .stat-suffix { font-family: var(--font-d); font-size: .48em; font-weight: 700; color: var(--mint); }
+        .stat-num.mono { font-family: var(--font-m); font-weight: 500; font-variant-numeric: tabular-nums; }
+        .stat-suffix { font-family: var(--font-d); font-size: .54em; font-weight: 700; color: var(--mint); margin-left: 6px; vertical-align: middle; }
         .stat-lbl {
             margin-top: 8px; font-size: 12px; font-weight: 500;
             letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-lo);
@@ -628,6 +631,32 @@
         .store-lbl  { font-size: 10px; color: var(--text-lo); }
         .store-name { font-family: var(--font-d); font-size: 16px; font-weight: 700; color: var(--text-hi); }
 
+        /* Primary TestFlight callout — same shape as store-btn, mint background */
+        .store-btn.primary {
+            background: var(--mint); border-color: var(--mint);
+        }
+        .store-btn.primary:hover { border-color: var(--mint); opacity: .92; }
+        .store-btn.primary .store-lbl,
+        .store-btn.primary .store-name { color: var(--bg); }
+        .store-btn.primary svg path { fill: var(--bg); }
+
+        /* Disabled "Coming soon" variant */
+        .store-btn.soon {
+            cursor: not-allowed; opacity: .55;
+        }
+        .store-btn.soon:hover { border-color: var(--shimmer); }
+        .store-btn.soon:active { transform: none; }
+
+        /* Feedback line under store row */
+        .cta-feedback {
+            margin-top: 36px; font-size: 14px; color: var(--text-lo);
+        }
+        .cta-feedback a {
+            color: var(--mint); font-family: var(--font-m); font-size: 14px;
+            border-bottom: 1px solid transparent; transition: border-color .2s;
+        }
+        .cta-feedback a:hover { border-bottom-color: var(--mint); }
+
         /* ────────────────────────────────
            FOOTER
         ──────────────────────────────── */
@@ -729,9 +758,9 @@
         <li><a href="#how">How It Works</a></li>
         <li><a href="#app">The App</a></li>
     </ul>
-    <button class="nav-cta" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">
-        Get Access
-    </button>
+    <a class="nav-cta" href="https://testflight.apple.com/join/CYNtK4at" target="_blank" rel="noopener">
+        Join iOS Beta
+    </a>
 </nav>
 
 <!-- HERO -->
@@ -754,17 +783,17 @@
 
     <div class="hero-pill">
         <span class="pill-dot"></span>
-        READY · 1:1 AI COACH
+        COMING SOON · iOS BETA OPEN
     </div>
 
     <h1 class="hero-word">HEAFT</h1>
     <div class="word-line"></div>
     <p class="hero-tagline">Train without doubt.</p>
-    <p class="hero-sub">Your AI personal asset for training. Every rep has a reason, every weight is justified, every day's plan is grounded in real data.</p>
+    <p class="hero-sub">Your AI personal asset for training. Every rep has a reason, every weight is justified, every day's plan is grounded in real data. <strong style="color:var(--text-hi)">iOS beta open now</strong> — Android coming soon.</p>
 
     <div class="hero-actions">
-        <a href="#download" class="btn-primary js-ripple">
-            Get Early Access
+        <a href="https://testflight.apple.com/join/CYNtK4at" target="_blank" rel="noopener" class="btn-primary js-ripple">
+            Join iOS Beta on TestFlight
             <svg class="arrow" width="15" height="15" viewBox="0 0 15 15" fill="none">
                 <path d="M3 7.5h9M8.5 4l3.5 3.5L8.5 11" stroke="#0B0F1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -778,22 +807,22 @@
     </div>
 </section>
 
-<!-- STATS -->
+<!-- STATS — beta-stage status row -->
 <section class="stats">
     <div class="stats-inner">
         <div class="stat-item reveal-scale">
-            <div class="stat-num"><span class="counter" data-to="14200" data-fmt="comma">0</span><span class="stat-suffix">+</span></div>
-            <div class="stat-lbl">Workouts Logged</div>
+            <div class="stat-num">iOS Beta<span class="stat-suffix">OPEN</span></div>
+            <div class="stat-lbl">Join via TestFlight</div>
         </div>
         <div class="stat-div"></div>
         <div class="stat-item reveal-scale d2">
-            <div class="stat-num"><span class="counter" data-to="91" data-fmt="int">0</span><span class="stat-suffix">%</span></div>
-            <div class="stat-lbl">PRs Hit When Prescribed</div>
+            <div class="stat-num">EN · AR</div>
+            <div class="stat-lbl">Bilingual from day one</div>
         </div>
         <div class="stat-div"></div>
         <div class="stat-item reveal-scale d4">
-            <div class="stat-num"><span class="counter" data-to="2.4" data-fmt="dec">0</span><span class="stat-suffix">×</span></div>
-            <div class="stat-lbl">Faster Progress</div>
+            <div class="stat-num mono">v1.0<span class="stat-suffix">SOON</span></div>
+            <div class="stat-lbl">App Store · Android next</div>
         </div>
     </div>
 </section>
@@ -975,29 +1004,33 @@
 
 <!-- FINAL CTA -->
 <section class="cta-sec" id="download">
-    <p class="sec-eyebrow reveal">Early Access</p>
-    <h2 class="cta-title reveal d1">Ready to train<br>without doubt?</h2>
-    <p class="cta-sub reveal d2">Available on iOS and Android. Join the waitlist.</p>
+    <p class="sec-eyebrow reveal">iOS Beta · Open Now</p>
+    <h2 class="cta-title reveal d1">Help us train<br>without doubt.</h2>
+    <p class="cta-sub reveal d2">The iOS beta is open via TestFlight. Try the app, lift, and tell us what's off. Android arrives after launch.</p>
     <div class="store-row reveal d3">
-        <a href="#" class="store-btn js-ripple">
+        <a href="https://testflight.apple.com/join/CYNtK4at" target="_blank" rel="noopener" class="store-btn primary js-ripple">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="#F5F7FA">
                 <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
             </svg>
             <div class="store-txt">
-                <span class="store-lbl">Download on the</span>
-                <span class="store-name">App Store</span>
+                <span class="store-lbl">Join the beta on</span>
+                <span class="store-name">TestFlight</span>
             </div>
         </a>
-        <a href="#" class="store-btn js-ripple">
+        <span class="store-btn soon" aria-disabled="true">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="#F5F7FA">
                 <path d="M3.18 23.76c.3.17.64.24 1 .2L15.34 12 11.5 8.16 3.18 23.76zM20.06 10.37l-2.78-1.6-3.84 3.84 3.84 3.84 2.82-1.62a1.99 1.99 0 000-4.46zM2 2.54v18.92L13.16 12 2 2.54zM11.5 15.84l3.84 3.84-10.16 5.88L11.5 15.84z"/>
             </svg>
             <div class="store-txt">
-                <span class="store-lbl">Get it on</span>
+                <span class="store-lbl">Coming soon to</span>
                 <span class="store-name">Google Play</span>
             </div>
-        </a>
+        </span>
     </div>
+    <p class="cta-feedback reveal d4">
+        Found a bug or have feedback? Email
+        <a href="mailto:support@heaft.app">support@heaft.app</a>
+    </p>
 </section>
 
 <!-- FOOTER -->
